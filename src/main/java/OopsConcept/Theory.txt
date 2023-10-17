@@ -1,0 +1,570 @@
+
+1- Why String is immutable in Java?
+
+Immutable strings help maintain the integrity of sensitive data like passwords.
+String password = "mySecretPassword";
+// An attacker can't change the value of 'password' since strings are immutable.
+
+Caching:
+Java caches string literals to save memory. Immutability ensures that cached strings won't change unexpectedly.
+String name1 = "John"; // 'name1' refers to a cached string
+String name2 = "John"; // 'name2' refers to the same cached string
+
+Hashing:
+Immutable strings are suitable for keys in hash-based data structures.
+Map<String, Integer> scores = new HashMap<>();
+scores.put("Alice", 95);
+scores.put("Bob", 88);
+If strings were mutable, changing a key's value could lead to issues with key retrieval.
+
+
+2-What is static in java? 
+In Java, the static keyword is used to define a member (variable or method) that belongs to the class itself,
+rather than to a specific instance of the class. It is not tied to any particular object but rather to the class itself.
+Static variables are declared using the static keyword.
+
+public class MyClass {
+    // Static variable
+    static int staticVariable = 0;
+    
+    // Instance variable
+    int instanceVariable = 0;
+
+    // Static method
+    static void staticMethod() {
+        System.out.println("This is a static method.");
+    }
+
+    // Instance method
+    void instanceMethod() {
+        System.out.println("This is an instance method.");
+    }
+
+    public static void main(String[] args) {
+        // Accessing static variable and method using the class name
+        MyClass.staticVariable = 1;
+        MyClass.staticMethod();
+
+        // Creating instances of MyClass
+        MyClass obj1 = new MyClass();
+        MyClass obj2 = new MyClass();
+
+        // Accessing instance variable and method using object references
+        obj1.instanceVariable = 2;
+        obj1.instanceMethod();
+        obj2.instanceVariable = 3;
+        obj2.instanceMethod();
+
+        // Static variable remains shared among all instances
+        System.out.println("Static variable from obj1: " + obj1.staticVariable);
+        System.out.println("Static variable from obj2: " + obj2.staticVariable);
+    }
+}
+
+3- What is final in java?
+final keyword is used to indicate that something is unchangeable, or that it cannot be overridden, depending on where
+it is used. Here are the two primary uses of final in Java:
+
+Final Variables: When applied to a variable, the final keyword indicates that the variable's value cannot be changed 
+once it is assigned. Final variables are also called "constants."
+
+Final Methods: When applied to a method, the final keyword indicates that the method cannot be overridden by subclasses.
+
+4- What is this word in java?
+
+The use of this helps clarify which variable is being referred to and is particularly useful when 
+instance variables and parameters share.
+It is commonly used to distinguish between instance variables and method parameters with the same name.
+the same name.
+Final is also known as constant
+
+5- What is finally and where do we use it? Why do we use finally and how it differs from the final
+keyword?
+In Java, the finally block is used in conjunction with a try-catch block to ensure that a specific block of code is 
+executed, whether an exception is thrown or not. It is often used to perform cleanup operations or release resources 
+that must be done regardless of whether an exception occurs. 
+
+6- What is serialization and deserialization?
+Serialization is the process of converting an object's state to a byte stream, while deserialization is the process of 
+reconstructing an object from a byte stream. These mechanisms are commonly used for tasks such as saving object states
+to files, sending objects over a network, or storing them in a database.
+
+7- What is an abstract modifier?
+An abstract class is a class declared with the abstract keyword.
+It cannot be instantiated directly (i.e., you cannot create objects of an abstract class).
+It can contain both abstract (unimplemented) methods and concrete (implemented) methods.
+Subclasses of an abstract class must provide implementations for all abstract methods or declare themselves as abstract.
+
+8- What is call by reference and call by value?
+call by reference is not in java
+In call by value, when you pass an argument to a method, a copy of the actual value is passed. Any modifications made 
+to the parameter inside the method do not affect the original variable outside the method. 
+In other words, the method works with a copy of the data, not the original data.
+
+9- Primitives and Non-Primitives datatypes in Java?
+Primitive data types are used to store simple values directly in memory. They are called "primitive" because they are not
+objects and do not have methods associated with them. ex String, int, float, char, boolean,
+
+int age = 30;
+double price = 19.99;
+char grade = 'A';
+boolean isValid = true;
+
+Reference (non-primitive) data types are more complex because they can represent objects, collections, or more complex 
+structures.
+String text = "Hello, World!"; // String is a class
+List<Integer> numbers = new ArrayList<>(); // ArrayList is a class
+Person person = new Person(); // Assuming Person is a user-defined class
+
+10- What is the method of overloading?
+Method overloading is a feature in Java that allows you to define multiple methods in a class with the same name but with
+different parameters. 
+
+11- Difference between Array and ArrayList? 
+Arrays have a fixed size that is determined when they are created. Once the size is set, it cannot be changed.
+ArrayLists can dynamically grow or shrink in size as elements are added or removed. 
+
+Arrays can store elements of a single data type (e.g., int[], String[]).
+ArrayLists are generic and can store elements of any data type (e.g., ArrayList<Integer>, ArrayList<String>).
+
+To get the length of an array, you use the length attribute (e.g., myArray.length).
+To get the size of an ArrayList, you use the size() method (e.g., myArrayList.size()).
+
+Arrays use indexing to access elements (e.g., myArray[0]).
+ArrayLists use the get(index) method to access elements (e.g., myArrayList.get(0)).
+
+Arrays have a fixed size, so you need to know the size in advance when creating them. If you need to resize an array, 
+you must create a new one and copy elements.
+ArrayLists can grow or shrink dynamically, making them more flexible for handling collections that may change in size.
+
+ArrayLists come with a variety of built-in methods for adding, removing, searching, and manipulating elements. 
+They are part of the Java Collections Framework.
+Arrays have limited built-in methods and require manual manipulation for tasks like resizing.
+
+12- Difference between abstract and interface?
+An abstract class is a class that can have both abstract (unimplemented) methods and concrete (implemented) methods.
+Subclasses of an abstract class must provide concrete (implemented) definitions for all abstract methods or declare 
+themselves as abstract classes.
+Abstract classes can have constructors.
+
+An interface is a contract that defines a set of abstract methods but does not provide any implementation.
+Classes that implement an interface must provide concrete implementations for all the methods defined in the interface.
+Interfaces cannot have constructors, as they cannot be instantiated.
+
+13- Difference between ArrayList and LinkedList?
+OR Difference between Arraylist and Linked List,In which situation
+they are used ?
+
+
+ArrayList is based on an array data structure, which allows for fast random access to elements.
+ArrayList generally consumes less memory compared to LinkedList because it only stores elements and 
+a small amount of overhead for the array.
+LinkedList is based on a doubly-linked list data structure, which allows for efficient insertion and deletion of 
+elements at both ends of the list.
+Insertion and deletion of elements are faster in a LinkedList compared to an ArrayList.
+LinkedList generally consumes more memory compared to ArrayList because it stores elements and maintains references 
+between nodes.
+Use LinkedList when you frequently insert or remove elements from the beginning, middle, or end of the list and do not 
+require fast random access.
+
+14- Difference between final, finally, finalize? 
+Final Variables: When you declare a variable as final, it means that the variable's value cannot be changed after 
+it is assigned a value. It makes the variable a constant.
+Final Methods: When you declare a method as final in a class, it means that the method cannot be overridden by subclasses.
+It provides method-level immutability.
+Final Classes: When you declare a class as final, it means that the class cannot be extended (subclassed).
+It prevents inheritance.
+
+finally is a keyword used in Java in the context of exception handling. It is used within a try-catch block to define a 
+block of code that is guaranteed to be executed regardless of whether an exception is thrown or not.
+
+finalize is a method defined in the java.lang.Object class. It is called by the garbage collector when an object is
+about to be reclaimed by the garbage collector. You can override this method in your own classes to define custom
+cleanup behavior for objects.
+
+
+15- What is the difference between a checked and unchecked exceptions?
+
+Checked Exception - Checked exceptions are checked at compile time. This means that the Java compiler requires you
+to handle (catch) these exceptions or declare that your method can throw them like IOException, SQLException,
+and ClassNotFoundException
+
+Unchecked Exception - Unchecked exceptions, also known as runtime exceptions, are not checked at compile time.
+Common examples of unchecked exceptions include NullPointerException, ArrayIndexOutOfBoundsException, and ArithmeticException
+
+16- Can we create the object for the abstract classes?
+
+No, you cannot create objects directly from abstract classes in Java. Abstract classes are designed to be incomplete, 
+and they often contain one or more abstract methods (methods without a body) that must be implemented 
+by concrete (non-abstract) subclasses. Due to this incomplete nature, abstract classes cannot be instantiated.
+However, you can create objects of concrete subclasses that extend an abstract class. 
+
+17- Can we create the object for an interface?
+
+No, you cannot create objects directly from an interface in Java. Interfaces are abstract by nature and
+do not provide implementations for their methods. They define a contract or a set of abstract methods that
+concrete classes must implement. Because of this, interfaces cannot be instantiated.
+
+However, you can create objects of classes that implement the interface, and those objects can be used to invoke
+the methods defined in the interface
+
+18- Can we create constructor of abstract class?
+
+Yes, you can create constructors in an abstract class in Java. Abstract classes can have constructors 
+just like any other class. Check file AbstractConstrctorExample
+
+19- Can constructor be overloaded. Explain why?
+Yes, constructors can be overloaded in Java. Constructor overloading is the practice of defining multiple constructors
+for a class, each with a different parameter list. This allows objects of the class to be created with different sets
+of initial values, providing flexibility and ease of use [Check - ConstructorOverloading]
+
+20- Can main method be overloaded? / Can we over load main method in Java?
+No, you cannot overload the main method in Java. The main method is a special entry point for a Java application,
+and it must have the exact signature:
+public static void main(String[] args)
+
+21- Can main method be overridden?
+No, you cannot override the main method in Java. The main method is a static method in the java.lang.Object class, 
+and it serves as the entry point for a Java application. Static methods cannot be overridden in Java;
+
+22- Can we override static method?
+No, you cannot override a static method in Java. Static methods belong to a class itself rather than to instances
+of the class.
+
+23- Can we overload static method?
+
+Yes, you can overload static methods in Java. Method overloading is the practice of defining multiple methods
+in the same class with the same name but different parameter lists (different types or different numbers of parameters).
+[Check File:OverloadStaticMethod]
+
+
+24- Can we write non-abstract methods in Interface?
+
+Interface only contain abstract method declarations. However, starting from Java 8, you can add non-abstract methods
+in interfaces using a feature called "default methods." Default methods have a default implementation in the interface itself, 
+but classes that implement the interface can choose to override them. 
+[Check File: InterfaceWithNonAbstractMethod]
+
+25- Can we execute a java program without main method?
+In Java, you cannot execute a program without a main method. The main method is the entry point for a Java application,
+and it serves as the starting point for program execution. 
+
+"public static void main(String[] args)"
+
+26- Can we call a non-static variable in static method?
+No, In Java, you cannot directly access non-static (instance) variables from a static method without creating an 
+instance of the class that contains those non-static variables.
+
+27- Can I execute multiple catch blocks without try will it give me compile time error?
+No, you cannot execute multiple catch blocks without a try block in Java. It will result in a compilation error.
+The catch blocks are used to catch and handle exceptions that occur within the corresponding try block. If there is
+no try block, there is no associated code that can throw exceptions, and the catch blocks become meaningless in the 
+absence of a try block.
+
+28- If we declare the main method as private what will happen?
+your program will compile successfully. However, when you try to run the program, you will get a runtime error, 
+specifically a NoSuchMethodError.
+
+The main method serves as the entry point for a Java application. It needs to be public so that the Java Virtual Machine
+(JVM) can find and invoke it when you run your program. If you declare it as private, it becomes inaccessible from
+outside the class, including from the JVM, which leads to the runtime error.
+
+29- How to check whether the array is empty and null?
+Check File: ArrayCheckExpl
+
+30- What are the classes available in a list interface?
+In Java, the List interface is part of the Java Collections Framework and provides an ordered collection of elements
+that allows duplicates.
+
+- ArrayList: java.util.ArrayList
+- LinkedList: java.util.LinkedList
+- Vector: java.util.Vector
+- Stack: java.util.Stack
+
+31- What is the use of constructor in java?
+In Java, a constructor is a special type of method that is used to initialize objects of a class.
+The primary purpose of a constructor is to initialize the state of an object. When you create a new instance of a class
+(an object), the constructor is called to set up the initial values of the object's instance variables 
+(also known as fields).
+
+- Providing Default Values
+- Overloading: Java allows you to define multiple constructors for a class, each with a different parameter list. 
+
+32-  Access modifiers in java and its scope?
+In Java, access modifiers are keywords that specify the visibility or accessibility of classes, methods, variables, 
+or other members within a class. There are four main access modifiers in Java, each with its own scope and rules:
+
+Public: Accessible from anywhere.
+Private: Accessible only within the same class.
+Protected: Accessible within the same class, subclass (even if in a different package), and package.
+Default (Package-Private): Accessible within the same class and package.
+Example:
+public class MyClass {
+    public int publicVar;          // Accessible from anywhere
+    private int privateVar;        // Accessible only within MyClass
+    protected int protectedVar;    // Accessible within MyClass, subclasses, and same package
+    int defaultVar;                // Accessible within MyClass and same package
+}
+
+
+33- • What is singleton class in java?
+ 
+ 
+34- What is the difference between static binding and dynamic binding?
+Static Binding: Static binding occurs at compile time. The method to be called is determined by the compiler based 
+on the reference type (the type of the reference variable) and not the actual object type.
+Dynamic Binding: Dynamic binding occurs at runtime. The method to be called is determined by the JVM 
+(or the runtime environment) based on the actual object type during program execution.
+CHECK FILE: StaticNdDynBiding
+
+35- What is static, How to set value of static variable
+In Java, a static variable (also known as a class variable) is a variable that belongs to the class rather than
+to any instance of the class. It is shared among all instances of the class and can be accessed using the class name
+- Static variables are shared among all instances (objects) of a class. If one instance modifies the value of a
+static variable, the change is reflected in all other instances.
+- Static variables are stored at the class level, not at the instance level. 
+- 
+
+36- Can we overload private methods?
+Yes, you can overload private methods in Java, just like you can overload public or protected methods.
+Method overloading is a feature in Java that allows you to define multiple methods in the same class with the same name
+but with different parameter lists (different number or types of parameters)
+
+37- Is it possible to extend Final Class?
+No, it is not possible to extend a final class in Java. When a class is declared as final, it means that it cannot
+be subclassed or extended by other classes. The final modifier is used to indicate that a class is complete and should
+not be modified or extended further.
+
+Example:
+
+final class FinalClass {
+    // Class members and methods
+}
+
+// This will result in a compilation error because you cannot extend a final class.
+// class Subclass extends FinalClass {
+//     // Subclass members and methods
+// }
+
+38- Is it possible to override Static method? 
+No, it is not possible to override a static method in Java.
+When you define a static method in a class and then create subclasses of that class, you can declare static methods
+with the same name in the subclasses, but these are not considered overrides. Instead, they are treated as completely
+independent methods that are not related to the static methods in the superclass.
+
+39- Is it possible to overload main method? 
+
+Yes, it is possible to overload the main method in Java. 
+However, the main entry point method for a Java application must always have the standard 
+public static void main(String[] args) signature.
+To run other main methods you have to call them explicitly
+Check file: MainMethodOverloading
+
+
+40-  Is it possible to initialize a variable present in an Interface? 
+Yes, it is possible, however 
+In Java, interface variables (fields) are implicitly public, static, and final, which means they are constants. 
+- They can be called without making instance of a class.
+- They values cannot be changed as they are constant.
+
+41-  What would happen, if multiple inheritance is possible, in Java?
+
+In Java, multiple inheritance is not supported for classes. This means that a class cannot directly inherit
+from more than one class. However, Java supports multiple inheritance through interfaces, which allows a class
+to implement multiple interfaces.
+Bcoz of diamond problem multiple inheritance is not supported.
+
+42- Explain Exceptions hierarchy in java?
+
+In Java, exceptions are objects that represent exceptional conditions or errors that can occur during program execution. 
+
+- Throwable (java.lang.Throwable): This is the root class for all exceptions in Java.
+- Unchecked exceptions, also known as runtime exceptions, do not need to be declared in method signatures using throws
+- Examples include NullPointerException, IllegalArgumentException, and ArithmeticException
+-  Checked exceptions must be declared in method signatures using the throws keyword or caught using try-catch blocks.
+Examples include IOException, ClassNotFoundException, and SQLException
+-Custom Exception
+
+
+43-  Explain Set and Map in Java?
+
+In Java, both Set and Map are part of the Java Collections Framework and are used to store and manipulate collections
+of objects. They serve different purposes and have distinct characteristics:
+
+-Set:
+A Set is a collection that stores a group of unique elements. It does not allow duplicate elements.
+The main implementations of the Set interface in Java are HashSet, LinkedHashSet, and TreeSet
+
+-Map:
+A Map is a collection that stores key-value pairs, where each key is associated with a value. Each key in a Map is unique,
+but different keys can be associated with the same value.
+The main implementations of the Map interface in Java are HashMap, LinkedHashMap, and TreeMap
+
+Check File: MapExample and SetExample
+
+44- • Difference between overloading and overriding?
+
+Method Overloading:
+Definition: Method overloading, also known as compile-time polymorphism or static polymorphism, allows a class to
+have multiple methods with the same name within the same class. These methods must differ in their parameter lists
+
+Return Type: Overloaded methods may have the same or different return types.
+Access Modifiers: Overloaded methods can have the same or different access modifiers (public, private, protected, package-private).
+Inheritance: Overloading occurs within a single class; it doesn't involve inheritance.
+
+Method Overriding:
+Definition: Method overriding, also known as runtime polymorphism or dynamic polymorphism, occurs when a subclass 
+provides a specific implementation of a method that is already defined in its superclass. The method in the subclass
+must have the same name, return type, and parameters as the method in the superclass.
+Access Modifiers: Overridden methods must have the same or a less restrictive access modifie
+Inheritance: Overriding is specific to inheritance; it involves a superclass-subclass relationship.
+
+
+45- Difference Encapsulation and Abstraction ?
+encapsulation is about bundling data and methods together within a class and controlling access to them,
+while abstraction is about simplifying complex systems by defining abstract classes and methods that provide a
+blueprint for derived classes, focusing on essential characteristics while hiding implementation details. 
+Both principles are essential in OOP and contribute to creating maintainable, extensible, and well-organized code.
+
+46-Difference between throw and throws?
+
+throw and throws are two keywords in Java that are related to exception handling, but they serve different purposes:
+-Throw
+Usage: The throw keyword is used to explicitly throw an exception in your code.
+When: It is used within a method or a block to indicate that an exceptional condition has occurred, and you want to 
+raise an exception.
+
+Check File: ThrowExample
+
+-Throws
+Usage: The throws keyword is used in method declarations to indicate that a particular method may throw exceptions
+during its execution.
+
+When: It is used in a method signature to specify the exceptions that the method might throw but does not necessarily 
+throw.
+
+Example:
+public void myMethod() throws IOException, MyCustomException {
+    // Method code that might throw IOException or MyCustomException
+}
+
+47- How and when to use interface?
+-Interfaces in Java are used to define a contract or a set of methods that classes must implement.
+- Inside the interface, you can declare method signatures (without implementations) and 
+constants (variables that are implicitly public, static, and final).
+- To implement an interface in a class, use the implements keyword, followed by the interface name(s).
+- Java allows a class to implement multiple interfaces, which is a way to achieve multiple inheritance of 
+method contracts.
+
+48- Can we instantiate an interface?
+No, you cannot directly instantiate (create an object of) an interface in Java.
+However, you can indirectly create an object of a class that implements an interface, 
+and that object can be treated as an instance of the interface. 
+
+49- Can we override constructor? 
+
+No, you cannot override a constructor in Java. Constructors are special methods in a class that are used 
+to initialize objects of that class. They are not inherited like regular methods, and therefore, the concept of 
+method overriding does not apply to constructors.
+Constructors are not inherited by subclasses. Each class, including its subclasses, must define its own constructors.
+You can have multiple constructors in a class by overloading them
+
+50-  What is the system.out.println? and use of it?
+- It is used to print to console.
+- Displaying Output:
+- Debugging:
+- Logging: 
+
+51- Can we use multiple catches? When can we use multiple catches?
+
+Yes, you can use multiple catch blocks in Java, and they are often used together in a try-catch block structure 
+to handle different types of exceptions that may be thrown within the same try block.
+
+ 
+52-  How to prevent the override method in Java?
+In Java, if you want to prevent a method from being overridden in a subclass, you can use the final modifier
+in the method's declaration. When a method is marked as final, it cannot be overridden by any subclass, 
+and any attempt to do so will result in a compilation error.
+
+53- Why is the main method static?
+Since the main method is the entry point for the program, it's called before any objects are created. 
+If the main method were not static, Java would need to create an object just to call main, which would be inefficient 
+and unnecessary.
+
+54- What is the use of static variables?
+Static variables in Java, also known as class variables, are variables that belong to the class itself rather than to 
+any specific instance of the class. 
+
+55- Static variables are shared among all instances (objects) of the class. This means that all objects of the class 
+have access to the same static variable, and any changes made to it are reflected in all instances.
+Suitable for storing data that is common to all instances of the class
+
+56- • What is the difference between list and set?
+List: Allows duplicate elements. You can have multiple elements with the same value in a List.
+Set: Does not allow duplicate elements. Every element in a Set must be unique.
+
+List: Maintains the order of elements as they are added. You can access elements in a List by their index.
+Set: Does not guarantee any specific order of elements. except e.g., LinkedHashSet
+
+List: Common implementations include ArrayList, LinkedList, and Vector
+Set: Common implementations include HashSet, LinkedHashSet, and TreeSet. 
+
+List: Used when you need to store a collection of elements where duplicates are allowed and order matters. 
+eg. items in a shopping cart
+
+Set: Used when you need to store a collection of elements where duplicates are not allowed, and you don't necessarily 
+need to maintain a specific order. 
+
+57- • How will you access default and protected class?
+A default class (also known as package-private class) is accessible only within the same package. It is the absence of 
+an access modifier before the class declaration.
+
+To access a default class, you need to be in the same package as the class you want to access. Once you are in the same 
+package, you can create instances of the class, extend it, or use its methods and fields just like any other class
+
+The protected access modifier is typically used for class members (fields and methods) within a class, and it doesn't 
+apply directly to classes. 
+
+58- • Why Object creation not possible in Abstract classes?
+
+We cannot directly create he object of Abstract Class.
+You should create concrete subclasses that extend the abstract class.
+In the concrete subclasses, you provide implementations for all the abstract methods defined in the abstract class.
+You can then create objects from these concrete subclasses, which have complete implementations.
+
+59- Will Java provide default constructor by own ? How
+In Java, if you do not provide any constructor for a class, the Java compiler will automatically generate a default 
+constructor for that class. The default constructor is a no-argument constructor with an empty body. 
+
+60- Situations when we use abstraction and Interface - explanation
+about loosely coupled and tightly coupled
+- With abstraction and interface we can achieve loose coupled.
+
+61- In which situation the method should be static and when non static?
+Static methods are often used for utility functions that are not associated with a specific instance of a class. 
+These methods perform some operation based solely on their input parameters and do not depend on the state of any object.
+
+62- In which situation the method should be static and when non static?
+Use non-static methods when the behavior of the method is dependent on the state of the object (instance variables). 
+Instance methods can access and modify the state of the object.
+
+63- How does HashMap is implemented using key value pair?
+hashMap.put(key1, value1);
+hashMap.put(key2, value2);
+// Add more key-value pairs as needed
+
+64-Suppose you have class and abstract class in class there is a user defined constructor and main method which one will 
+get executed first? 
+
+The main method is the entry point and gets executed first.
+
+Inside the main method, we create an object of ConcreteClass using new ConcreteClass();. 
+This leads to the constructor of ConcreteClass being executed.
+
+The constructor of ConcreteClass includes super();, which calls the constructor of the abstract class (AbstractClass). 
+Therefore, "AbstractClass constructor" is printed before "ConcreteClass constructor."
+
+After object creation and constructor execution, you can call methods on the object, such as abstractMethod().
+HashMap<KeyType, ValueType> hashMap = new HashMap<>();
+
+ 

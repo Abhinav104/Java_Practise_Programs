@@ -1,0 +1,87 @@
+
+Access Modifiers:
+
+Access modifier is of 4 types.
+Default modifier can be assigned automatic to the variable, method and class. 
+Default access modifier we can use within the package only.
+Public can be used within and outside  the package.
+Protected within the package only and for outside the package by creating the child class
+Private within the class and to use outside the class we have to use functions getter and setter.
+
+Class:
+Class is the collection of objects
+Class is not the real world entity. It is just a template or blue print like Animal
+Class does not occupy memory because it is not the real world entity ex Animal
+Class name should start with Capital letter or every world should start with capital letter.
+Syntax to make a class - access-modifier class ClassName{}.
+If we do not define access modifier then it will be "default"
+Inside class body we can define {variables/fields, methods, constructors, blocks, nested class}
+Class has propertise and Behaviour
+class name should always start from capital
+
+Methods:
+A set of codes to perform some particular task like eat(), run(), fly().
+With methods we can achieve code reusability and code optimization.
+Syntax: access-modifier return-type methodName(list of parameters){}
+If we do not define access modifier then it will be "default"
+
+Objects:
+Object is instance of class (Dog is an instance of Animal)
+Object is real world entity
+Object occupies memory.
+Objects are specific instance of a class like Mobile is class we can make several instances (Apple, samsung etc)
+Object Consist of:
+ - Identity: name
+ - State/Attribute : color, breed, age.
+ - Behaviour: eat, run, fly.
+ Syntax Animal bruno = new Animal()
+ where new is the keyword and then Animal is the constructor for initialization.
+ With the objects we can call methods/behaviour by using (.) operator like bruno.eat(), bruno.sleep();
+ 
+ Object has some metods and propertise.
+ this keywords tells the methods from which object it is called
+ when create object with new keyword it occupy memory
+ 
+ Constructor should be of same class name
+ Constructor does not have return type like void, int, float.
+ Constructor can be called only one time.
+ They called automatically when we create an object of the class
+ constructor cannot be abstract, final, synchronized, and static.
+ We cannot override a constructor
+ 
+ Types of constructor
+ - Non parametarize constructor - They are just simple const. show by any syso statement "constructor created"
+ - Parametarize constructor
+ - copy constructor
+ 
+ 
+ When we create any program in java then main method should be there.
+ 
+ 4 OOPS concept in Java:
+ -Encapsulation
+ -Abstraction
+ -Interface
+ -Polymorphism
+ 
+Polymorphism: Many behaviour
+
+Poly means many and morphism means many/behave.
+Two types: Compiletime(Early Binding) and run time(Late Binding).
+
+Compile-time Polymorphism (Method Overloading): This occurs when multiple methods in the same class have the same name 
+but different parameter lists (different number or types of parameters).
+
+Packages - Package is like a carton where we put similar types of things like one package for pens, another one for erasers
+
+4 access modifiers in java
+- PUBLIC - Cab be used Inside and Outside classes and Packages by making object 
+- PRIVATE - Private can only be used inside its own class and use of getter and setter
+- PROTECTED - Protected can only be used inside the package and subclaases outside the package
+- DEFAULT - When we don't write anything in our propertise and methods its become default and can be used inside its package only
+Main class in java cannot be private, protected and default
+
+Static Keyword - If we use static with any variables and methods then we can use directly without creating object of class
+Static is used when we ant keep variable and method common at all place
+
+
+
